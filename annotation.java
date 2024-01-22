@@ -46,11 +46,10 @@ class B extends A {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
 
     public void showDataFromLastYearDatabase() {
         ArrayList<Integer> obj = new ArrayList<>();
-        System.out.println("from B");
+        System.out.println("from B" + obj);
     }
 }
 
@@ -59,9 +58,13 @@ public class annotation {
         // NOTE: Annotations
         int[] ar = { 1, 2, 3 };
         int[] ar1 = new int[4];
+        System.out.println(ar + " " + ar1);
         NokiaASeries obj1A = new NokiaASeries("Fire", 5);
         // To access Os from Annotation create Class object
-        Class c = obj1A.getClass();
+        // Class<NokiaASeries> c = obj1A.getClass();
+        // Annotation an = c.getAnnotation(SmartPhone.class);
+
+        Class<? extends NokiaASeries> c = obj1A.getClass();
         Annotation an = (Annotation) c.getAnnotation(SmartPhone.class);
         SmartPhone s = (SmartPhone) an;
         System.out.println(s.os());
